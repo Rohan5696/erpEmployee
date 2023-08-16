@@ -1,0 +1,44 @@
+<div class="card">
+    <div class="card-header">
+      Current Employees
+    </div>
+    {{retrieveItems(employees)}}
+    <ul *ngFor="let emp of currEmployees; let i = index;" class="list-group list-group-flush">
+        <li appSwipeToDelete (swipeToDelete)="emp.swiped=true" class="list-group-item">
+            <div class="item-content" (click)="routeEdit(emp)" [class.swiped]="emp.swiped">
+                <ul style="font-weight: bold;">{{emp.name}}</ul>
+                <ul>{{emp.position}}</ul>
+                <ul>From : {{emp.startDate | date:'mediumDate'}}</ul>
+              </div>
+              <div class="delete-icon" *ngIf="emp.swiped">
+                <i (click)="deleteItem(emp.id,i)">Delete</i>
+              </div>
+          
+        </li>
+      </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      Previous Employees
+    </div>
+    <ul *ngFor="let emp of preEmployees; let i = index;" class="list-group list-group-flush">
+        <li appSwipeToDelete (swipeToDelete)="emp.swiped=true" class="list-group-item">
+            <div class="item-content" (click)="routeEdit(emp)" [class.swiped]="emp.swiped">
+                <ul style="font-weight: bold;">{{emp.name}}</ul>
+                <ul>{{emp.position}}</ul>
+                <ul>{{emp.startDate| date:'mediumDate'}}-{{emp.endDate| date:'mediumDate'}}</ul>
+              </div>
+              <div class="delete-icon" *ngIf="emp.swiped">
+                <i (click)="deleteItem(emp.id,i)">Delete</i>
+              </div>
+          
+        </li>
+      </ul>
+  </div>
+
+  <div class="absolute">
+    <span id="colorModeText">Swipe to delete.</span>
+  </div>
+
+  

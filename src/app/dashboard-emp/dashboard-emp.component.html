@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Employee List</a>
+    </div>
+  </nav>
+  <div *ngIf="employeesData.length==0; else list">
+    <h5>No Employee Record!!!</h5>
+  </div>
+
+  <ng-template #list>
+    <app-emp-details [employees]="employeesData"></app-emp-details>
+  </ng-template>
+    <button routerLink="/empform" class="btnpos">+</button>
