@@ -23,8 +23,4 @@ async retrieveItems() {
   }
 }
 
-
-  routeTo(){
-    this.router.navigate(['empform']);
-  }
 }
